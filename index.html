@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اتم | انرژی خورشیدی</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-loader" id="page-loader" role="status" aria-label="در حال بارگذاری محتوا">
+    <svg height="108" width="108" viewBox="0 0 128 128" class="loader" aria-hidden="true">
+      <defs>
+        <clipPath id="loader-eyes">
+          <circle transform="rotate(-40,64,64) translate(0,-56)" r="8" cy="64" cx="64" class="loader__eye1"></circle>
+          <circle transform="rotate(40,64,64) translate(0,-56)" r="8" cy="64" cx="64" class="loader__eye2"></circle>
+        </clipPath>
+        <linearGradient y2="1" x2="0" y1="0" x1="0" id="loader-grad"><stop stop-color="#000" offset="0%"></stop><stop stop-color="#fff" offset="100%"></stop></linearGradient>
+        <mask id="loader-mask"><rect fill="url(#loader-grad)" height="128" width="128" y="0" x="0"></rect></mask>
+      </defs>
+      <g stroke-dasharray="175.93 351.86" stroke-width="12" stroke-linecap="round">
+        <g><rect clip-path="url(#loader-eyes)" height="64" width="128" fill="hsl(193,90%,50%)"></rect><g stroke="hsl(193,90%,50%)" fill="none"><circle transform="rotate(180,64,64)" r="56" cy="64" cx="64" class="loader__mouth1"></circle><circle transform="rotate(0,64,64)" r="56" cy="64" cx="64" class="loader__mouth2"></circle></g></g>
+        <g mask="url(#loader-mask)"><rect clip-path="url(#loader-eyes)" height="64" width="128" fill="hsl(223,90%,50%)"></rect><g stroke="hsl(223,90%,50%)" fill="none"><circle transform="rotate(180,64,64)" r="56" cy="64" cx="64" class="loader__mouth1"></circle><circle transform="rotate(0,64,64)" r="56" cy="64" cx="64" class="loader__mouth2"></circle></g></g>
+      </g>
+    </svg>
+  </div>
+  <main class="hero">
+    <section class="intro" aria-labelledby="title">
+      <h1 id="title">اتم</h1>
+      <p class="description">اتم کوچک‌ترین واحد سازنده‌ی ماده است که از هسته (پروتون و نوترون) و الکترون‌های گرد آن تشکیل شده است.</p>
+    </section>
+
+    <div class="atom-stage" tabindex="0" aria-label="مدل سه بعدی اتم؛ برای نمایش اطلاعات ذرات روی آن نگه دارید">
+      <img src="assets/atom.svg" width="520" height="520" draggable="false" alt="مدل اتم با مدارهای الکترون" />
+      <aside class="atom-info" aria-live="polite">
+        <strong>بار ذرات اتم</strong>
+        <span>الکترون: منفی · پروتون: مثبت · نوترون: خنثی</span>
+        <small>هسته از پروتون و نوترون تشکیل شده است.</small>
+      </aside>
+    </div>
+  </main>
+
+  <section class="about-atoms" aria-labelledby="everywhere-title">
+    <div class="about-copy">
+      <h2 id="everywhere-title">اتم کجاها هست؟</h2>
+      <p><strong>هر جا که نگاه کنی، اتم هست.</strong> اتم‌ها آجرهای بنیادی جهان ما هستند و هیچ چیز بدون آن‌ها وجود ندارد.</p>
+    </div>
+
+    <div class="object-slider" aria-label="نمونه‌هایی از چیزهایی که از اتم تشکیل شده‌اند">
+      <div class="slides">
+        <figure class="object-slide is-active"><img src="assets/objects/rose.webp" alt="میز و نیمکت مدرسه" /></figure>
+        <figure class="object-slide"><img src="assets/objects/person.webp" alt="انسان" /></figure>
+        <figure class="object-slide"><img src="assets/objects/apple.webp" alt="سیب" /></figure>
+        <figure class="object-slide"><img src="assets/objects/flower.webp" alt="گل رز" /></figure>
+      </div>
+      <div class="slider-controls" dir="ltr">
+        <button class="slider-next" type="button" aria-label="تصویر بعدی">←</button>
+        <button class="slider-prev" type="button" aria-label="تصویر قبلی">→</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="electricity-section" aria-labelledby="freedom-title">
+    <div class="freedom-intro">
+      <h2 id="freedom-title">اگه اتمی که الکترون داره همه‌جا هست، پس چرا همه‌جا برقی نیست؟</h2>
+      <p class="freedom-answer"><strong>«آزادی»!</strong></p>
+      <p>الکترون‌ها در همه‌جا هستند، اما همه‌ی آن‌ها اجازه‌ی حرکت ندارند.</p>
+    </div>
+
+    <div class="classification" aria-label="دسته‌بندی اجسام">
+      <h3>دسته‌بندی اجسام</h3>
+      <div class="classification-line" aria-hidden="true"></div>
+      <div class="classification-options">
+        <span>رسانا</span>
+        <span>نیمه‌رسانا</span>
+        <span>نارسانا</span>
+      </div>
+    </div>
+
+    <div class="material-types">
+      <article class="material-card conductor">
+        <h3>رسانا</h3>
+        <p>در این مواد، الکترون‌های لایه‌ی بیرونیِ اتم، <strong>آزاد</strong> هستند. آن‌ها مثل ماشین‌هایی هستند که در یک خیابان باز رها شده‌اند و می‌توانند آزادانه حرکت کنند.</p>
+      </article>
+      <article class="material-card semiconductor">
+        <h3>نیمه‌رسانا</h3>
+        <p>این‌ها نه کاملاً آزادند و نه کاملاً اسیر. الکترون‌هایشان در حالت عادی «خواب» هستند، اما اگر یک <strong>انرژی بیرونی</strong> (مثل نور خورشید) به آن‌ها برسد، بیدار می‌شوند و حرکت می‌کنند!</p>
+      </article>
+      <article class="material-card insulator">
+        <h3>نارسانا</h3>
+        <p>در این مواد، الکترون‌ها <strong>اسیر</strong> هستند و محکم به اتم چسبیده‌اند. آن‌ها مثل ماشین‌هایی هستند که ترمزشان کشیده شده و در پارکینگ قفل شده‌اند.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="silicon-section" aria-labelledby="silicon-title">
+    <div class="silicon-copy">
+      <h2 id="silicon-title">سیلیکون‌ها</h2>
+      <p>سیلیکون فراوان‌ترین عنصر روی زمین بعد از اکسیژن است. اما در طبیعت، سیلیکون خالص پیدا نمی‌شود؛ بلکه با اکسیژن ترکیب شده و شن، ماسه و سنگ را می‌سازد. برای ساختن پنل خورشیدی، دانشمندان سیلیکون را از این مواد جدا کرده و خالص‌سازی می‌کنند. سیلیکونِ خالصِ خالص‌شده، پایه‌ی ساخت پنل است.</p>
+    </div>
+    <div class="silicon-image-wrap" aria-hidden="true">
+      <img src="assets/silicon.webp" alt="" />
+    </div>
+  </section>
+
+  <section class="rock-slider-section" aria-labelledby="rocks-title">
+    <h2 id="rocks-title">منابع سیلیکون</h2>
+    <div class="rock-slider" aria-label="نمونه‌هایی از سنگ‌ها و ماسه‌های دارای سیلیکون">
+      <div class="rock-slides">
+        <figure class="rock-slide is-active"><img src="assets/rocks/granite.webp" alt="سنگ گرانیت" /><figcaption>سنگ گرانیت</figcaption></figure>
+        <figure class="rock-slide"><img src="assets/rocks/basalt.webp" alt="بازالت" /><figcaption>بازالت</figcaption></figure>
+        <figure class="rock-slide"><img src="assets/rocks/igneous.webp" alt="سنگ‌های آذرین" /><figcaption>سنگ‌های آذرین</figcaption></figure>
+        <figure class="rock-slide"><img src="assets/rocks/quartz.webp" alt="ماسه کوارتزی" /><figcaption>ماسه کوارتزی</figcaption></figure>
+      </div>
+      <div class="slider-controls" dir="ltr">
+        <button class="rock-next" type="button" aria-label="تصویر بعدی">←</button>
+        <button class="rock-prev" type="button" aria-label="تصویر قبلی">→</button>
+      </div>
+    </div>
+    <div class="rock-notes">
+      <p>همه‌ی ماسه‌ها یکسان نیستند! ماسه‌ی سفید لب ساحل اغلب از خرده‌ی صدف ساخته شده و سیلیکون کمی دارد. برای ساختن پنل خورشیدی، دانشمندان از سنگ کوارتز یا ماسه‌های معدنیِ بسیار خالص استفاده می‌کنند تا سیلیکون خالص به دست بیاورند.</p>
+      <p>برای ساخت پنل خورشیدی، هر سنگی به درد نمی‌خورد. دانشمندان به سراغ سنگ‌هایی می‌روند که سرشار از سیلیکونِ خالص باشند؛ مثل کوارتز و ماسه‌های معدنی خالص. چون هرچه سنگ خالص‌تر باشد، جداسازی سیلیکون از آن آسان‌تر و ارزان‌تر است.</p>
+    </div>
+  </section>
+
+  <section class="extraction-section" aria-labelledby="extraction-title">
+    <h2 id="extraction-title">اگه سیلیکون در طبیعت اسیر اکسیژن است، چطور آن را آزاد می‌کنند؟</h2>
+    <h3>چطور سیلیکون را از دل ماسه بیرون می‌کشند؟</h3>
+    <div class="extraction-copy">
+      <p>در کوره‌های عظیم صنعتی (با دمای حدود ۲۰۰۰ درجه)، شن و ماسه را حرارت می‌دهند. در این دمای بالا، پیوند بین سیلیکون و اکسیژن می‌شکند. اکسیژن به شکل گاز از کوره خارج می‌شود و <strong>سیلیکون خالص</strong> باقی می‌ماند.</p>
+      <p>سیلیکون به دست‌آمده به شکل بلوک‌های براقی درمی‌آید که به آن‌ها <strong>ویفر سیلیکونی</strong> می‌گویند. همین ویفرها قلب تپنده‌ی پنل‌های خورشیدی (و حتی تراشه‌های گوشی و کامپیوتر!) هستند.</p>
+    </div>
+  </section>
+
+  <section class="photon-section" aria-labelledby="photon-title">
+    <h2 id="photon-title">نور خورشید چطور الکترون‌ها را بیدار می‌کند؟</h2>
+    <div class="photon-copy">
+      <p>حالا ما یک ماده‌ی نیمه‌رسانا (سیلیکون خالص) داریم که الکترون‌هایش در حالت عادی اسیرند و نمی‌توانند آزادانه حرکت کنند. اما یک چیز کم داریم: <strong>یک بیدارکننده!</strong></p>
+      <p>اینجاست که <strong>فوتون‌ها</strong> وارد می‌شوند. فوتون‌ها ذره‌های کوچک نور خورشید هستند که حامل انرژی‌اند. وقتی نور خورشید به سیلیکون برخورد می‌کند، فوتون‌ها به الکترون‌ها برخورد کرده و <strong>انرژی خود را به آن‌ها می‌دهند</strong>.</p>
+      <p>این دقیقاً مثل این است که یک کارفرما (فوتون) به یک کارگر خوابیده (الکترون) ضربه‌ای بزند و بگوید: «بیدار شو! وقت کار است!»</p>
+      <p>اگر انرژی فوتون به اندازه‌ی کافی باشد (که نور خورشید قطعاً هست)، الکترون از قید اتم آزاد می‌شود و می‌تواند حرکت کند. به این پدیده‌ی شگفت‌انگیز، <strong>«اثر فتوولتائیک»</strong> می‌گویند.</p>
+    </div>
+    <figure class="photon-illustration"><img src="assets/photon-energy.svg" alt="انتقال انرژی فوتون نور خورشید به الکترون در سیلیکون" /></figure>
+    <aside class="photon-note"><strong>⚠️ نکته‌ی مهم:</strong> فوتون به الکترون تبدیل نمی‌شود! الکترون از قبل در اتم بود. فوتون فقط انرژی می‌دهد تا الکترونِ موجود آزاد شود. (مثل کارفرمایی که خودش تبدیل به کارگر نمی‌شود، فقط کارگر را بیدار می‌کند).</aside>
+  </section>
+
+  <section class="dc-section" aria-labelledby="dc-title">
+    <h2 id="dc-title">تولید جریان برق (DC)</h2>
+    <div class="dc-intro">
+      <p>در مرحله‌ی قبل دیدیم که فوتون‌ها (نور خورشید) الکترون‌ها را از خواب بیدار می‌کنند. اما اگر الکترون‌های بیدارشده را به حال خودشان رها کنیم، دوباره به دام می‌افتند یا فقط بی‌هدف این‌ور و آن‌ور می‌روند. ما به یک <strong>مدیر کارگاه</strong> نیاز داریم تا به این کارگران جهت بدهد.</p>
+      <p>اینجاست که ساختار هوشمند پنل خورشیدی وارد عمل می‌شود. دانشمندان در زمان ساخت پنل، سیلیکون را به دو لایه‌ی متفاوت تقسیم می‌کنند:</p>
+    </div>
+    <div class="layer-cards">
+      <article class="layer-card n-layer"><h3>لایه‌ی n-type (منفی)</h3><p>با اضافه کردن مقدار کمی <strong>فسفر</strong>، الکترون‌های اضافی در آن ایجاد می‌شود.</p></article>
+      <article class="layer-card p-layer"><h3>لایه‌ی p-type (مثبت)</h3><p>با اضافه کردن مقدار کمی <strong>بور</strong>، جای خالی برای الکترون‌ها (حفره) ایجاد می‌شود.</p></article>
+    </div>
+    <div class="dc-result">
+      <img class="dc-image" src="assets/dc.webp" alt="نمایش جریان AC و DC" />
+      <p>وقتی این دو لایه روی هم قرار می‌گیرند، در مرز برخوردشان یک <strong>میدان الکتریکی</strong> ایجاد می‌شود. این میدان الکتریکی کارش این است که:</p>
+      <ul>
+        <li>الکترون‌های آزادشده (که بار منفی دارند) را به سمت لایه‌ی n هدایت کند.</li>
+        <li>حفره‌ها را به سمت لایه‌ی p بفرستد.</li>
+      </ul>
+      <p>نتیجه چه می‌شود؟ الکترون‌ها در یک سمت پنل جمع می‌شوند. این تجمع الکترون‌ها باعث ایجاد <strong>اختلاف پتانسیل</strong> (همان ولتاژ) می‌شود.</p>
+      <p>حالا اگر ما با یک سیم، دو لایه‌ی n و p را به هم وصل کنیم (مدار بسته)، الکترون‌های آزادشده از داخل سیم عبور می‌کنند و به سمت دیگر می‌روند. این حرکت جهت‌دار الکترون‌ها در سیم، همان چیزی است که ما به آن <strong>«جریان برق مستقیم» یا DC</strong> می‌گوییم.</p>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>

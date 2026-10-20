@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 840 840" fill="none">
+  <defs>
+    <radialGradient id="core" cx="32%" cy="25%"><stop stop-color="#fff8d8"/><stop offset=".27" stop-color="#ffe65a"/><stop offset=".68" stop-color="#ff69bd"/><stop offset="1" stop-color="#65164b"/></radialGradient>
+    <radialGradient id="electron" cx="30%" cy="24%"><stop stop-color="#eaffea"/><stop offset=".32" stop-color="#73f67b"/><stop offset="1" stop-color="#0b662f"/></radialGradient>
+    <linearGradient id="orbit" x1="96" y1="110" x2="495" y2="500"><stop stop-color="#4ea4ff"/><stop offset=".5" stop-color="#f6fbfa"/><stop offset="1" stop-color="#ff69bd"/></linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@500;700&amp;display=swap');
+    .atom { transform-origin: 300px 300px; }
+    .label { fill: #edf7f0; font-family: Vazirmatn, Tahoma, Arial, sans-serif; font-size: 22px; font-weight: 700; }
+    .callout { stroke: #c7d9d0; stroke-width: 2.5; marker-end: url(#arrow); }
+  </style>
+  <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#c7d9d0"/></marker>
+  <g class="atom">
+  <g opacity=".9" stroke="url(#orbit)" stroke-width="4">
+    <ellipse cx="300" cy="300" rx="245" ry="96" transform="rotate(-22 300 300)"/>
+    <ellipse cx="300" cy="300" rx="245" ry="96" transform="rotate(38 300 300)"/>
+    <ellipse cx="300" cy="300" rx="245" ry="96" transform="rotate(98 300 300)"/>
+  </g>
+  <g filter="url(#glow)">
+    <circle cx="160" cy="177" r="16" fill="url(#electron)"/><circle cx="457" cy="225" r="16" fill="url(#electron)"/><circle cx="191" cy="455" r="16" fill="url(#electron)"/>
+  </g>
+  <g filter="url(#glow)">
+    <circle cx="300" cy="300" r="69" fill="#ff69bd" opacity=".24"/>
+    <circle cx="272" cy="280" r="32" fill="url(#core)"/><circle cx="329" cy="280" r="32" fill="url(#core)"/>
+    <circle cx="300" cy="331" r="32" fill="url(#core)"/><circle cx="300" cy="244" r="27" fill="#4ea4ff"/>
+  </g>
+  <g direction="rtl" text-anchor="start">
+    <path class="callout" d="M112 104L151 164"/><text class="label" x="35" y="88">الکترون</text>
+    <path class="callout" d="M489 154L350 267"/><text class="label" x="447" y="133">پروتون</text>
+    <path class="callout" d="M493 441L330 326"/><text class="label" x="447" y="470">نوترون</text>
+    <path class="callout" d="M253 506L290 356"/><text class="label" x="205" y="542">هسته</text>
+  </g>
+  </g>
+</svg>
