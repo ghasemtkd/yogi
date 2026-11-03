@@ -1,120 +1,65 @@
-const stage = document.querySelector('.atom-stage');
-const model = stage.querySelector('img');
-let rotationX = 0;
-let rotationY = 0;
-let startX = 0;
-let startY = 0;
-let startRotationX = 0;
-let startRotationY = 0;
+(() => {
+  const dayNames = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه'];
+  // رنگ هر روز هفته ثابت است؛ پنج رنگ اصلی با دو طیف مکمل برای هفت روز کامل می‌شوند.
+  const weekdayColors = ['yellow', 'green', 'blue', 'red', 'purple', 'orange', 'teal'];
+  const titleColors = {
+    yellow: '#ffdf70', green: '#78e0b4', blue: '#79c7ff', red: '#ff8f9f',
+    purple: '#c8a2ff', orange: '#ffad74', teal: '#62ddd0'
+  };
+  const dayDeck = document.querySelector('#week-cards');
 
-model.addEventListener('dragstart', (event) => event.preventDefault());
+  // Read the current calendar date in Tehran, then do date arithmetic at UTC noon
+  // so the result is stable even when the visitor's device uses another time zone.
+  const iranParts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Tehran', year: 'numeric', month: 'numeric', day: 'numeric'
+  }).formatToParts(new Date());
+  const part = (type) => Number(iranParts.find((item) => item.type === type).value);
+  const tehranToday = new Date(Date.UTC(part('year'), part('month') - 1, part('day'), 12));
+  const jalaliDate = (date, options = { day: 'numeric', month: 'long', year: 'numeric' }) =>
+    new Intl.DateTimeFormat('fa-IR-u-ca-persian', { timeZone: 'Asia/Tehran', ...options }).format(date);
 
-stage.addEventListener('pointerdown', (event) => {
-  startX = event.clientX;
-  startY = event.clientY;
-  startRotationX = rotationX;
-  startRotationY = rotationY;
-  stage.classList.add('is-dragging');
-  stage.setPointerCapture(event.pointerId);
-});
-
-stage.addEventListener('pointermove', (event) => {
-  if (!stage.hasPointerCapture(event.pointerId)) return;
-  rotationY = startRotationY + (event.clientX - startX) * .55;
-  rotationX = startRotationX - (event.clientY - startY) * .55;
-  model.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-});
-
-function stopDragging(event) {
-  if (stage.hasPointerCapture(event.pointerId)) stage.releasePointerCapture(event.pointerId);
-  stage.classList.remove('is-dragging');
-}
-
-stage.addEventListener('pointerup', stopDragging);
-stage.addEventListener('pointercancel', stopDragging);
-
-const slides = [...document.querySelectorAll('.object-slide')];
-const nextButton = document.querySelector('.slider-next');
-const previousButton = document.querySelector('.slider-prev');
-let activeSlide = 0;
-
-function showSlide(index) {
-  slides[activeSlide].classList.remove('is-active');
-  activeSlide = (index + slides.length) % slides.length;
-  slides[activeSlide].classList.add('is-active');
-}
-
-nextButton.addEventListener('click', () => showSlide(activeSlide + 1));
-previousButton.addEventListener('click', () => showSlide(activeSlide - 1));
-
-const rockSlides = [...document.querySelectorAll('.rock-slide')];
-const rockNextButton = document.querySelector('.rock-next');
-const rockPreviousButton = document.querySelector('.rock-prev');
-let activeRockSlide = 0;
-
-function showRockSlide(index) {
-  rockSlides[activeRockSlide].classList.remove('is-active');
-  activeRockSlide = (index + rockSlides.length) % rockSlides.length;
-  rockSlides[activeRockSlide].classList.add('is-active');
-}
-
-rockNextButton.addEventListener('click', () => showRockSlide(activeRockSlide + 1));
-rockPreviousButton.addEventListener('click', () => showRockSlide(activeRockSlide - 1));
-
-const loader = document.querySelector('#page-loader');
-const minimumLoaderTime = 2000;
-const loaderStartedAt = performance.now();
-const maxImageRetries = 3;
-
-function loadImageWithRetry(image, attempt = 0) {
-  return new Promise((resolve) => {
-    if (image.complete) {
-      if (image.naturalWidth > 0) resolve();
-      else if (attempt < maxImageRetries) {
-        const retryUrl = new URL(image.currentSrc || image.src, window.location.href);
-        retryUrl.searchParams.set('retry', `${Date.now()}-${attempt}`);
-        window.setTimeout(() => {
-          image.src = retryUrl.href;
-          loadImageWithRetry(image, attempt + 1).then(resolve);
-        }, 450 * (attempt + 1));
-      } else {
-        image.classList.add('image-load-failed');
-        resolve();
-      }
-      return;
-    }
-
-    const finish = () => {
-      image.removeEventListener('load', onLoad);
-      image.removeEventListener('error', onError);
-      resolve();
-    };
-    const onLoad = () => finish();
-    const onError = () => {
-      image.removeEventListener('load', onLoad);
-      image.removeEventListener('error', onError);
-      if (attempt < maxImageRetries) {
-        const retryUrl = new URL(image.currentSrc || image.src, window.location.href);
-        retryUrl.searchParams.set('retry', `${Date.now()}-${attempt}`);
-        window.setTimeout(() => {
-          image.src = retryUrl.href;
-          loadImageWithRetry(image, attempt + 1).then(resolve);
-        }, 450 * (attempt + 1));
-      } else {
-        image.classList.add('image-load-failed');
-        resolve();
-      }
-    };
-    image.addEventListener('load', onLoad, { once: true });
-    image.addEventListener('error', onError, { once: true });
+  const todayIndex = (tehranToday.getUTCDay() + 1) % 7; // Saturday is the first day of the Iranian week.
+  const days = Array.from({ length: 7 }, (_, offset) => {
+    const date = new Date(tehranToday);
+    date.setUTCDate(tehranToday.getUTCDate() + offset);
+    const weekdayIndex = (date.getUTCDay() + 1) % 7;
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'day-card';
+    card.dataset.offset = String(offset);
+    card.dataset.color = weekdayColors[weekdayIndex];
+    card.setAttribute('aria-label', `${offset === 0 ? 'امروز، ' : ''}${dayNames[weekdayIndex]}، ${jalaliDate(date)}`);
+    card.innerHTML = `
+      <span class="card-inner" data-watermark="${String(offset + 1).toLocaleString('fa-IR')}">
+        <span class="day-label">${offset === 0 ? 'امروز' : `${offset.toLocaleString('fa-IR')}`}</span>
+        <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"></rect><path d="M8 3v4M16 3v4M3.5 10h17M8.5 15l2 2 4.5-5"></path></svg>
+        <strong class="day-name">${dayNames[weekdayIndex]}</strong>
+        <span class="day-date">${jalaliDate(date)}</span>
+        <em class="day-status">${offset === 0 ? 'تاریخ امروز' : 'روز آینده'}</em>
+      </span>`;
+    dayDeck.append(card);
+    return card;
   });
-}
 
-async function finishPageLoading() {
-  const images = [...document.images].filter((image) => !image.closest('.page-loader'));
-  await Promise.all(images.map((image) => loadImageWithRetry(image)));
-  const remainingTime = Math.max(0, minimumLoaderTime - (performance.now() - loaderStartedAt));
-  window.setTimeout(() => loader.classList.add('is-hidden'), remainingTime);
-}
-
-finishPageLoading();
+  let activeIndex = 0;
+  function render() {
+    document.body.dataset.themeColor = days[activeIndex].dataset.color;
+    document.body.style.setProperty('--theme-ink', titleColors[days[activeIndex].dataset.color]);
+    days.forEach((card, index) => {
+      card.classList.remove('is-active', 'is-previous', 'is-next', 'is-next-two');
+      if (index === activeIndex) card.classList.add('is-active');
+      else if (index === activeIndex - 1) card.classList.add('is-previous');
+      else if (index === activeIndex + 1) card.classList.add('is-next');
+      else if (index === activeIndex + 2) card.classList.add('is-next-two');
+      card.setAttribute('aria-pressed', String(index === activeIndex));
+      card.tabIndex = index >= activeIndex - 1 && index <= activeIndex + 2 ? 0 : -1;
+    });
+  }
+  dayDeck.addEventListener('click', (event) => {
+    const card = event.target.closest('.day-card');
+    if (!card) return;
+    const index = Number(card.dataset.offset);
+    if (index >= activeIndex - 1 && index <= activeIndex + 2) { activeIndex = index; render(); }
+  });
+  render();
+})();
